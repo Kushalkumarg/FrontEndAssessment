@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Details - Step 3</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .scroll-container {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .image-preview {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mb-4">Lets add your first product</h2>
+        <div class="scroll-container">
+            <h4>Basic Details</h4>
+            <form>
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" class="form-control" id="productName" placeholder="e.g. anatomy book">
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Product Description</label>
+                    <textarea class="form-control" id="productDescription" placeholder="Input text"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="imageUpload">Add Image</label>
+                    <div class="image-preview" id="imagePreview">Image</div>
+                    <input type="file" class="form-control" id="imageUpload" accept="image/*">
+                </div>
+                <h4>Pricing Details</h4>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gstInclusive">
+                    <label class="form-check-label" for="gstInclusive">Price inclusive of GST</label>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6 form-group">
+                        <label for="netPrice">Net Price</label>
+                        <input type="text" class="form-control" id="netPrice" placeholder="e.g. 80">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="listPrice">List Price</label>
+                        <input type="text" class="form-control" id="listPrice" placeholder="e.g. 100">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="discount">Discount Percentage</label>
+                        <input type="text" class="form-control" id="discount" placeholder="e.g. 40">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="gstRate">GST Rate</label>
+                        <input type="text" class="form-control" id="gstRate" placeholder="e.g. 20">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="shipping">Shipping Charges (if any)</label>
+                        <input type="text" class="form-control" id="shipping" placeholder="e.g. 40">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="stockLevel">Stock Level</label>
+                        <input type="text" class="form-control" id="stockLevel" placeholder="e.g. 110">
+                    </div>
+                </div>
+                <div class="btn-container">
+                    <a href="ProductTypes.html"><button type="button" class="btn btn-secondary">Back</button></a>
+                    <button type="submit" class="btn btn-primary">Next</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('imageUpload').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('imagePreview').style.backgroundImage = `url(${e.target.result})`;
+                    document.getElementById('imagePreview').textContent = '';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
